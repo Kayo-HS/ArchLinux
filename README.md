@@ -35,7 +35,7 @@ Os wallpapers não estão incluídos no repositório para reduzir seu tamanho.
 Clone o repositório:
 
 ```bash
-git clone <repo>
+git clone https://github.com/Kayo-HS/ArchLinux
 ```
 
 Copie os arquivos para sua pasta `.config`:
