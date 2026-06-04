@@ -1,0 +1,45 @@
+@import url("file:///home/kayotest/.cache/wal/colors.css");
+window {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid alpha(@foreground, 0.15);
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 16px;
+}
+
+#input {
+    margin: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid @color4;
+    color: @foreground;
+    background-color: alpha(@background, 0.9);
+}
+#entry {
+    padding: 6px 10px;
+    margin: 2px 6px;
+    border-radius: 8px;
+}
+#entry:hover {
+    background-color: alpha(@foreground, 0.08);
+}
+
+#entry:selected {
+    background-color: @color4;
+    border-radius: 8px;
+}
+
+#text:selected {
+    color: @background;
+}
+
+#text {
+    margin: 5px;
+    color: @foreground;
+}
+
+#text:selected {
+    color: @background; /* Inverte a cor do texto quando selecionado para dar contraste */
+}
+layerrule = blur, wofi
+layerrule = ignorealpha 0.3, wofi

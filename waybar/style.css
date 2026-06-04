@@ -1,0 +1,87 @@
+@import "/home/kayotest/.cache/wal/colors-waybar.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+/* barra transparente */
+window#waybar {
+    background: transparent;
+}
+
+/* ilhas */
+#custom-arch,
+#workspaces,
+#pulseaudio,
+#network,
+#clock,
+#cpu,
+#memory,
+#tray {
+    background: alpha(@background,0.85);
+    padding: 7px 15px;
+    
+    
+    
+}
+
+/* bordas das ilhas */
+#custom-arch {
+    border-radius: 12px 0 0 12px;
+}
+
+#workspaces {
+    border-radius: 0 12px 12px 0;
+}
+
+#clock {
+    border-radius: 12px;
+    margin: 6px;
+}
+
+#pulseaudio {
+    border-radius: 12px 0 0 12px;
+}
+
+#tray {
+    border-radius: 0 12px 12px 0;
+}
+
+/* espaçamento das ilhas */
+#modules-left,
+#modules-right {
+    margin: 6px;
+}
+
+/* workspaces */
+#workspaces button {
+    padding: 0 8px;
+    color: @foreground;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: @color4;
+    font-size: 18px;
+    border-bottom: 2px solid @color4;
+    opacity: 1;
+}
+
+/* clock */
+#clock {
+    color: @color5;
+    font-weight: bold;
+}
+
+/* status icons */
+#cpu,
+#memory,
+#network,
+#pulseaudio {
+    color: @foreground;
+}
+

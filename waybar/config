@@ -1,0 +1,77 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces"
+  ],
+
+  "hyprland/workspaces":{
+    "format": " {icon} ",
+    "sort-by-number": true,
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
+    }
+  },
+
+
+  "modules-center":[
+    "clock"
+  ],
+
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "tray"
+  ],
+
+  "custom/arch": {
+    "format": "󰣇",
+    "on-click": "kitty"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}"
+  },
+
+  "cpu": {
+    "format": "󰍛 {usage}%"
+  },
+
+  "memory": {
+    "format": "󰘚 {}%"
+  },
+
+  "network": {
+    "format-wifi": "󰖩 ",
+    "format-ethernet": "󰈀 ",
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "nm-connection-editor"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰸈",
+    "format-icons": [
+      " ",
+      " "
+
+    ],
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5"
+  }
+}
