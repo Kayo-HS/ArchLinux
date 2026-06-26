@@ -1,87 +1,127 @@
-@import "/home/kayotest/.cache/wal/colors-waybar.css";
 
+/* ═══════════════════════════════════════════════
+   Base
+═══════════════════════════════════════════════ */
 * {
     border: none;
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
+    font-size: 13px;
+    min-height: 0;
 }
 
-/* barra transparente */
 window#waybar {
     background: transparent;
 }
 
-/* ilhas */
+/* ═══════════════════════════════════════════════
+   Ilhas — base comum
+═══════════════════════════════════════════════ */
 #custom-arch,
 #workspaces,
-#pulseaudio,
-#network,
 #clock,
 #cpu,
 #memory,
+#network,
+#pulseaudio,
 #tray {
-    background: alpha(@background,0.85);
-    padding: 7px 15px;
-    
-    
-    
+    background-color: alpha(@color0, 0.88);
+    color: @foreground;
+    padding: 12 14px;
+    margin: 5px 0;
+    border: 1px solid alpha(@color8, 0.2);
 }
 
-/* bordas das ilhas */
+/* ═══════════════════════════════════════════════
+   Ilhas — bordas e cores individuais
+═══════════════════════════════════════════════ */
 #custom-arch {
     border-radius: 12px 0 0 12px;
+    color: @color4;
+    font-size: 17px;
+    padding: 0 16px;
+    border-right: none;
 }
 
 #workspaces {
     border-radius: 0 12px 12px 0;
+    padding: 0 6px;
+    border-left: none;
 }
 
 #clock {
     border-radius: 12px;
-    margin: 6px;
+    margin: 5px 6px;
+    color: @color6;
+    font-weight: bold;
+    border-color: alpha(@color6, 0.3);
 }
 
+/* Lado direito: pulseaudio → network → cpu → memory → tray */
 #pulseaudio {
     border-radius: 12px 0 0 12px;
+    color: @color3;
+    border-right: none;
+}
+
+#network {
+    color: @color2;
+    border-left: none;
+    border-right: none;
+}
+
+#cpu {
+    color: @color1;
+    border-left: none;
+    border-right: none;
+}
+
+#memory {
+    color: @color5;
+    border-left: none;
+    border-right: none;
 }
 
 #tray {
     border-radius: 0 12px 12px 0;
+    border-left: none;
 }
 
-/* espaçamento das ilhas */
+/* ═══════════════════════════════════════════════
+   Margens dos módulos
+═══════════════════════════════════════════════ */
 #modules-left,
+#modules-center,
 #modules-right {
-    margin: 6px;
+    margin: 4px 8px;
 }
 
-/* workspaces */
+/* ═══════════════════════════════════════════════
+   Workspaces
+═══════════════════════════════════════════════ */
 #workspaces button {
     padding: 0 8px;
     color: @foreground;
-    opacity: 0.6;
+    opacity: 0.4;
+    background: transparent;
+    box-shadow: none;
     transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    opacity: 0.7;
+    background-color: alpha(@foreground, 0.07);
 }
 
 #workspaces button.active {
     color: @color4;
-    font-size: 18px;
-    border-bottom: 2px solid @color4;
     opacity: 1;
+    font-size: 16px;
+    border-bottom: 2px solid @color4;
 }
 
-/* clock */
-#clock {
-    color: @color5;
-    font-weight: bold;
+#workspaces button.urgent {
+    color: @color1;
+    opacity: 1;
+    border-bottom: 2px solid @color1;
 }
-
-/* status icons */
-#cpu,
-#memory,
-#network,
-#pulseaudio {
-    color: @foreground;
-}
-

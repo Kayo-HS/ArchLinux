@@ -1,45 +1,76 @@
 @import url("file:///home/kayotest/.cache/wal/colors.css");
+
+/*
+NOTA: as linhas abaixo NÃO pertencem a este arquivo CSS.
+   Mova-as para o seu hyprland.conf:
+
+
+*/
+
+/* ═══════════════════════════════════════════════
+   Janela principal
+═══════════════════════════════════════════════ */
 window {
-    margin: 0;
-    padding: 10px;
-    border: 1px solid alpha(@foreground, 0.15);
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 16px;
+    background-color: alpha(@color0, 0.90);
+    border: 1px solid alpha(@color8, 0.25);
+    border-radius: 14px;
 }
 
+/* ═══════════════════════════════════════════════
+   Campo de busca
+═══════════════════════════════════════════════ */
 #input {
-    margin: 8px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid @color4;
+    margin: 10px 10px 6px 10px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid alpha(@color4, 0.5);
     color: @foreground;
-    background-color: alpha(@background, 0.9);
+    background-color: alpha(@color0, 0.95);
+    caret-color: @color4;
 }
+
+#input:focus {
+    border-color: @color4;
+    outline: none;
+}
+
+/* ═══════════════════════════════════════════════
+   Lista
+═══════════════════════════════════════════════ */
+#scroll {
+    margin: 4px 6px 10px 6px;
+}
+
 #entry {
-    padding: 6px 10px;
-    margin: 2px 6px;
+    padding: 7px 10px;
+    margin: 2px 4px;
     border-radius: 8px;
+    transition: background-color 0.15s ease;
 }
+
 #entry:hover {
-    background-color: alpha(@foreground, 0.08);
+    background-color: alpha(@color8, 0.22);
 }
 
 #entry:selected {
     background-color: @color4;
-    border-radius: 8px;
+}
+
+/* ═══════════════════════════════════════════════
+   Texto
+═══════════════════════════════════════════════ */
+#text {
+    margin: 0 4px;
+    color: @foreground;
 }
 
 #text:selected {
     color: @background;
 }
 
-#text {
-    margin: 5px;
-    color: @foreground;
+/* ═══════════════════════════════════════════════
+   Ícone (se habilitado no config do wofi)
+═══════════════════════════════════════════════ */
+#img {
+    margin-right: 8px;
 }
-
-#text:selected {
-    color: @background; /* Inverte a cor do texto quando selecionado para dar contraste */
-}
-layerrule = blur, wofi
-layerrule = ignorealpha 0.3, wofi
