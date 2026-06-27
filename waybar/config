@@ -56,7 +56,7 @@
   },
 
   "network": {
-    "format-wifi": "󰖩 ",
+    "format-wifi": "󰖩 {signalStrength}%",
     "format-ethernet": "󰈀 ",
     "tooltip-format": "{essid} ({signalStrength}%)",
     "on-click": "nm-connection-editor"
