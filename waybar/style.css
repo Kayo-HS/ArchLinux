@@ -6,7 +6,7 @@
     border: none;
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 13px;
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -29,7 +29,34 @@ window#waybar {
     color: @foreground;
     padding: 12 14px;
     margin: 5px 0;
-    border: 1px solid alpha(@color8, 0.2);
+    border: 1px solid alpha(@foreground, 0.2);
+    box-shadow: 0 6px 18px rgba(0,0,0,.50);
+}
+/* ═══════════════════════════════════════════════
+   Ilhas - animação 
+═══════════════════════════════════════════════ */
+#custom-arch,
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray {
+    transition:
+        background-color .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+}
+
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover {
+    background-color: alpha(@foreground,0.09);
 }
 
 /* ═══════════════════════════════════════════════
@@ -65,19 +92,19 @@ window#waybar {
 }
 
 #network {
-    color: @color2;
+    color: @color3;
     border-left: none;
     border-right: none;
 }
 
 #cpu {
-    color: @color1;
+    color: @color3;
     border-left: none;
     border-right: none;
 }
 
 #memory {
-    color: @color5;
+    color: @color3;
     border-left: none;
     border-right: none;
 }
@@ -114,10 +141,10 @@ window#waybar {
 }
 
 #workspaces button.active {
+    background: alpha(@color4,0.15);
     color: @color4;
-    opacity: 1;
-    font-size: 16px;
-    border-bottom: 2px solid @color4;
+    border-radius: 8px;
+    border: none;
 }
 
 #workspaces button.urgent {

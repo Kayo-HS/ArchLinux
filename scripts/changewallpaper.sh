@@ -1,19 +1,11 @@
 #!/bin/bash
 
-# ──────────────────────────────────────────────────────────────
-#  changewallpaper.sh
-#  Suporta .jpg / .jpeg / .png  →  swww  + pywal
-#          .mp4                 →  mpvpaper + pywal via frame
-# ──────────────────────────────────────────────────────────────
-
 DIR="$HOME/.config/archrice/wallpapers"
 CACHE_WALL="$HOME/.cache/current_wallpaper"
 WAYBAR_CONFIG="$HOME/.config/archrice/waybar/config"
 WAYBAR_STYLE="$HOME/.config/archrice/waybar/style.css"
-WAYBAR_MERGED="/tmp/waybar-merged.css"   # CSS final (cores + estilo fundidos)
-FRAME_CACHE="/tmp/wallpaper_frame.jpg"
+WAYBAR_MERGED="/tmp/waybar-merged.css"
 
-# ── Seleção ────────────────────────────────────────────────────
 if [ -n "$1" ]; then
     wall="$1"
 else
@@ -33,11 +25,9 @@ fi
 echo "$wall" > "$CACHE_WALL"
 echo "Aplicando wallpaper: $(basename "$wall")"
 
-# ── Tipo ───────────────────────────────────────────────────────
 ext_lc="${wall##*.}"
 ext_lc="${ext_lc,,}"
 
-# ── Aplicar wallpaper e gerar paleta ──────────────────────────
 if [ "$ext_lc" = "mp4" ]; then
 
     pkill -x swww-daemon 2>/dev/null
@@ -46,17 +36,20 @@ if [ "$ext_lc" = "mp4" ]; then
 
     mpvpaper -o "no-audio --loop" '*' "$wall" &
 
+    # Nome único por vídeo — evita o cache errado do pywal
+    video_base=$(basename "${wall%.*}" | tr -cs '[:alnum:]_-' '_')
+    FRAME_CACHE="/tmp/wf_${video_base}.jpg"
+
     echo "Extraindo frame para paleta de cores..."
     if command -v ffmpeg &>/dev/null; then
         ffmpeg -i "$wall" -ss 00:00:03 -vframes 1 -y "$FRAME_CACHE" 2>/dev/null
         if [ -f "$FRAME_CACHE" ]; then
-            wal -i "$FRAME_CACHE" -n
+            wal -i "$FRAME_CACHE" -n -q
         else
             echo "Falha ao extrair frame — usando última paleta salva."
         fi
     else
         echo "ffmpeg não encontrado — instale com: sudo pacman -S ffmpeg"
-        echo "Usando última paleta salva."
     fi
 
 else
@@ -78,15 +71,12 @@ else
     sleep 0.4
 fi
 
-# ── Recarregar Waybar com as novas cores ──────────────────────
 pkill -x waybar 2>/dev/null
 sleep 0.3
 
-# Funde cores + estilo em um único arquivo para evitar cache do @import
 if [ -f "$HOME/.cache/wal/colors-waybar.css" ]; then
     cat "$HOME/.cache/wal/colors-waybar.css" "$WAYBAR_STYLE" > "$WAYBAR_MERGED"
 else
-    echo "Aviso: paleta não encontrada, iniciando waybar sem cores."
     cp "$WAYBAR_STYLE" "$WAYBAR_MERGED"
 fi
 
