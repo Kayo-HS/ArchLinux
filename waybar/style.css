@@ -19,6 +19,7 @@ window#waybar {
 ═══════════════════════════════════════════════ */
 #custom-arch,
 #workspaces,
+#mpris,
 #clock,
 #cpu,
 #memory,
@@ -110,6 +111,26 @@ window#waybar {
 #tray {
     border-radius: 0 12px 12px 0;
     border-left: none;
+}
+
+#mpris {
+    color: @color2;
+    padding: 0 16px;
+    margin: 8px 10px 8px 0;
+    border-color: alpha(@color5, 0.3);
+}
+
+#mpris:hover {
+    background-color: @color0;
+    color: @color0;
+}
+
+#mpris.playing {
+    color: @color6;
+}
+
+#mpris.paused {
+    color: alpha(@foreground, 0.55);
 }
 
 /* ═══════════════════════════════════════════════

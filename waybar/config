@@ -5,7 +5,8 @@
 
   "modules-left": [
     "custom/arch",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "mpris"
   ],
 
   "hyprland/workspaces":{
@@ -23,11 +24,14 @@
       "9": "九",
       "10": "十"
     }
+    
   },
 
 
   "modules-center":[
     "clock"
+    
+    
   ],
 
   "modules-right": [
@@ -73,5 +77,33 @@
     "on-click": "pavucontrol",
     "on-scroll-up": "pamixer -i 5",
     "on-scroll-down": "pamixer -d 5"
-  }
+  },
+
+  "mpris": {
+    "format": "{status_icon} {artist} - {title}",
+    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "player-icons": {
+        "default": "🎵",
+        "chromium": "🌐",
+        "spotify": "",
+        "steam": "  "
+    },
+    "status-icons": {
+        "playing": "▶",
+        "paused": "⏸"
+    },
+    "ignored-players": [
+      "firefox", 
+      "chrome"
+      ], 
+  
+    "title-len": 20,
+    "artist-len": 15
+}
+
+  
+
+
+
+  
 }
