@@ -84,7 +84,7 @@
     "format-paused": "{status_icon} <i>{artist} - {title}</i>",
     "player-icons": {
         "default": "🎵",
-        "chromium": "🌐",
+        "ytmdesktop2": " ",
         "spotify": "",
         "steam": "  "
     },
@@ -94,8 +94,8 @@
     },
     "ignored-players": [
       "firefox", 
-      "chrome"
-      ], 
+      "chromium.*"
+      ],
   
     "title-len": 20,
     "artist-len": 15
